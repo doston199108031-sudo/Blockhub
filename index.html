@@ -1,5 +1,15 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>BlokHub</title>
+<!doctype html><html><head><meta charset=utf8><link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B0F0C">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>BlokHub | Minecraft Bedrock modlari va add-onlar</title>
+<meta name="description" content="BlokHub (blockhub.uz): Minecraft Bedrock uchun modlar, add-onlar va o'zbekcha qo'llanma. Faylni yuklang, Minecraft uni o'zi ochadi.">
+<link rel="canonical" href="https://blockhub.uz/">
+<meta property="og:title" content="BlokHub | Minecraft Bedrock modlari">
+<meta property="og:description" content="Minecraft Bedrock uchun modlar, add-onlar va o'zbekcha qo'llanma.">
+<meta property="og:url" content="https://blockhub.uz/">
+<meta property="og:type" content="website">
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
 <style>
@@ -64,6 +74,7 @@ button { font: inherit; color: inherit; }
 .hero .sub { color: var(--muted); font-size: 18px; max-width: 34ch; margin-top: 16px; }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
 .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .stack { width: 100%; max-width: 320px; justify-self: center; }
 .stack svg { width: 100%; height: auto; display: block; }
@@ -104,6 +115,39 @@ details .body { padding-bottom: 16px; color: var(--muted); white-space: pre-line
 footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 13px; }
 footer .wrap { display: grid; gap: 8px; }
 
+
+/* kutubxona */
+.libbar{margin-top:16px}
+.fi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.fi .info{min-width:0;flex:1 1 200px}
+.fi h3{font-size:16px;overflow-wrap:anywhere}
+.fi p{color:var(--muted);font-size:13px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.acts .btn{min-height:40px;padding:0 14px}
+/* modal: Minecraft tanlash va tugmalar sozlamalari */
+.modal{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);color:var(--fg);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:16px 16px 0 0;border:1px solid var(--line);padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+.sheet>*{flex-shrink:0}
+.sheet.big{max-width:760px}
+.sheet h2{font-size:24px}.sheet h3{font-size:16px;margin-top:6px}
+.games{display:grid;gap:8px}
+.game{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:0 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;font-weight:600;text-align:left}
+.game small{color:var(--muted);font-weight:400}
+.btn.ghost{background:none}
+.pv{position:relative;width:100%;aspect-ratio:19/9;border:1px solid var(--line);border-radius:12px;background:#24352a;overflow:hidden;touch-action:none}
+.pb{position:absolute;transform:translate(-50%,-50%);border-radius:50%;border:2px solid #22C55E;background:rgba(10,15,12,.9);color:#fff;font-family:var(--font-display);font-weight:700;display:grid;place-items:center;cursor:grab;user-select:none;touch-action:none}
+.pb.on{box-shadow:0 0 0 3px #fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;font-weight:600}
+.row{display:flex;gap:8px}
+.row input,.ed input[type=text]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit;min-width:0}
+.row input{flex:1}
+.ed{display:grid;gap:10px}
+.ed label{display:grid;gap:4px;font-size:14px;color:var(--muted)}
+.ed input[type=range]{accent-color:var(--accent);width:100%}
+.stat{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:6px;border-top:1px solid var(--line)}
+.okk{color:var(--accent)}
+.btn.danger{color:#DC2626}
 @media (max-width: 720px) {
   .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }
   .stack { max-width: 220px; justify-self: start; }
@@ -140,7 +184,9 @@ footer .wrap { display: grid; gap: 8px; }
       <h1>BlokHub</h1>
       <p class="sub" data-t="hero_sub"></p>
       <div class="cta">
+        <button class="btn primary" id="appPlay" type="button" hidden data-t="app_play"></button>
         <button class="btn primary" type="button" data-scroll="mods" data-t="cta_mods"></button>
+        <button class="btn" id="appLib" type="button" hidden data-scroll="lib-sec" data-t="cta_lib"></button>
       </div>
     </div>
     <div class="stack" aria-hidden="true">
@@ -172,6 +218,15 @@ footer .wrap { display: grid; gap: 8px; }
     </div>
   </section>
 
+  <section id="lib-sec" hidden>
+    <div class="wrap">
+      <h2 data-t="lib_h"></h2>
+      <p class="lead" data-t="lib_p"></p>
+      <div class="cta libbar"><button class="btn primary" id="libAdd" type="button" data-t="lib_add"></button></div>
+      <div id="libList"></div>
+    </div>
+  </section>
+
   <section id="guide-sec">
     <div class="wrap">
       <h2 data-t="guide_h"></h2>
@@ -188,6 +243,30 @@ footer .wrap { display: grid; gap: 8px; }
   </div>
 </footer>
 
+<div class="modal" id="pickModal" hidden role="dialog" aria-modal="true">
+  <div class="sheet">
+    <h2 data-t="play_h"></h2>
+    <p class="lead" data-t="play_sub"></p>
+    <div class="games" id="games"></div>
+    <button class="btn" id="openSet" type="button" data-t="settings"></button>
+    <button class="btn ghost" data-close type="button" data-t="close"></button>
+  </div>
+</div>
+<div class="modal" id="setModal" hidden role="dialog" aria-modal="true">
+  <div class="sheet big">
+    <h2 data-t="set_h"></h2>
+    <p class="lead" data-t="set_sub"></p>
+    <div id="stat"></div>
+    <h3 data-t="preview"></h3>
+    <div class="pv" id="pv"></div>
+    <h3 data-t="add_h"></h3>
+    <div class="chips" id="chips"></div>
+    <div class="row"><input id="customKey" type="text" maxlength="16" autocapitalize="characters"><button class="btn" id="addCustom" type="button" data-t="add"></button></div>
+    <div id="editor"></div>
+    <button class="btn primary" data-close type="button" data-t="ok"></button>
+  </div>
+</div>
+
 <script>
 // HasanMC modlari: yangi mod qo'shish uchun shu ro'yxatga yozuv qo'shing.
 // { name, description: {uz, ru, en}, version, mcVersion, size, url }  (url: GitHub'dagi mods/ papkadagi fayl havolasi)
@@ -200,7 +279,7 @@ var MODS = [
       en: "Orbital Railgun add-on (BP and RP). Author: Hasan."
     },
     version: "1.0.0", mcVersion: "1.21.0+", size: "2.9 MB",
-    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/Orbital_Railgun_V1.0.0.mcaddon"
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/Orbital_Railgun_V1.0.0-1.mcaddon"
   },
   {
     name: "Better Cape & Elytra",
@@ -210,7 +289,7 @@ var MODS = [
       en: "Resource pack for capes and elytra with animated Cape Physics. Based on work by KID_SKY and Xatalyst, edited by Hasan."
     },
     version: "1.0.0", mcVersion: "Resource pack", size: "12.3 MB",
-    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/Better_Cape_and_Elytra.mcpack"
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/Better_Cape_and_Elytra_1_merged.mcpack"
   },
   {
     name: "Creative Anvil",
@@ -220,12 +299,42 @@ var MODS = [
       en: "Creative Anvil: a menu for any enchantment and level. Author: Hasan."
     },
     version: "1.0.0", mcVersion: "1.21.80+", size: "17 KB",
-    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/CreativeAnvil.mcaddon"
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/CreativeAnvil%20%281%29.mcaddon"
+  },
+  {
+    name: "Saitama",
+    description: {
+      uz: "Saitama (One Punch Man) add-oni. Muallif: Hasan.",
+      ru: "Аддон Saitama (One Punch Man). Автор: Hasan.",
+      en: "Saitama (One Punch Man) add-on. Author: Hasan."
+    },
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/Saitama_Fixed.mcaddon"
+  },
+  {
+    name: "Viltumite",
+    description: {
+      uz: "Viltumite add-oni. Muallif: Hasan.",
+      ru: "Аддон Viltumite. Автор: Hasan.",
+      en: "Viltumite add-on. Author: Hasan."
+    },
+    version: "1.0.0",
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/Viltumite_by_Hasan_1_0_0.mcaddon"
+  },
+  {
+    name: "Supernova NPC",
+    description: {
+      uz: "Supernova NPC add-oni. Muallif: Hasan.",
+      ru: "Аддон Supernova NPC. Автор: Hasan.",
+      en: "Supernova NPC add-on. Author: Hasan."
+    },
+    version: "1.0.0",
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/Supernova_NPC_by_Hasan_v1_0_0.mcaddon"
   }
 ];
 
 var T = {
   uz: {
+    app_play: "O'YNASH",
     tag: "Minecraft Bedrock uchun",
     hero_sub: "HasanMC modlari va Bedrock uchun qo'llanma. Faylni yuklang, Minecraft uni o'zi ochadi.",
     cta_mods: "HasanMC modlari",
@@ -249,6 +358,7 @@ var T = {
     foot_2: "Minecraft — Mojang Synergies AB'ning savdo belgisi."
   },
   ru: {
+    app_play: "ИГРАТЬ",
     tag: "Для Minecraft Bedrock",
     hero_sub: "Моды HasanMC и руководство для Bedrock. Скачайте файл, Minecraft откроет его сам.",
     cta_mods: "Моды HasanMC",
@@ -272,6 +382,7 @@ var T = {
     foot_2: "Minecraft является товарным знаком Mojang Synergies AB."
   },
   en: {
+    app_play: "PLAY",
     tag: "For Minecraft Bedrock",
     hero_sub: "HasanMC mods and a guide for Bedrock. Download a file and Minecraft opens it for you.",
     cta_mods: "HasanMC mods",
@@ -295,6 +406,226 @@ var T = {
     foot_2: "Minecraft is a trademark of Mojang Synergies AB."
   }
 };
+
+var X = {
+  uz: { cta_lib: "Mening fayllarim", lib_h: "Mening fayllarim", lib_p: "Xarita, resurs paket, add-on va boshqa fayllarni saqlang. Keyin bir bosishda Minecraft'ga import qiling.", lib_add: "Fayl qo'shish", lib_empty: "Hozircha saqlangan fayl yo'q.", lib_open: "Ochish", lib_del: "O'chirish", lib_sure: "Aniqmi?", lib_save: "Saqlash", t_world: "Xarita", t_pack: "Resurs/Behavior paket", t_addon: "Add-on", t_tmpl: "Shablon", t_other: "Boshqa", play_h: "Minecraft tanlang", play_sub: "Qaysi o'yinni ishga tushiramiz?", not_inst: "O'rnatilmagan", settings: "Minecraft sozlamalari", close: "Yopish", ok: "Tayyor",
+    set_h: "Minecraft tugmalari", set_sub: "O'yin ustida chiqadigan qo'shimcha tugmalar. Joyini o'zgartirish uchun tugmani surib qo'ying.",
+    preview: "Ekran ko'rinishi", add_h: "Tugma qo'shish", add_custom: "Boshqa tugma (masalan G)", add: "Qo'shish",
+    sel_h: "Tanlangan tugma", key: "Tugma", label: "Yozuv", size: "Kattaligi", opac: "Shaffofligi", del: "O'chirish", none_sel: "Tugmani tanlang yoki yangisini qo'shing.",
+    perm_overlay: "Boshqa ilovalar ustida ko'rsatish", perm_keys: "Tugma yuborish (Shizuku)", grant: "Yoqish", on: "Yoqilgan",
+    keys_note: "Android oddiy ilovaga boshqa ilovada tugma bosishga ruxsat bermaydi. Buning uchun Shizuku (yoki root) kerak.",
+    pd: { Q: "Tashlash", F5: "Kamera", F1: "Interfeys", F3: "Debug", E: "Inventar", T: "Chat", F11: "To'liq ekran" } },
+  ru: { cta_lib: "Мои файлы", lib_h: "Мои файлы", lib_p: "Сохраняйте карты, ресурспаки, аддоны и другие файлы. Затем импортируйте в Minecraft одним касанием.", lib_add: "Добавить файл", lib_empty: "Сохранённых файлов пока нет.", lib_open: "Открыть", lib_del: "Удалить", lib_sure: "Точно?", lib_save: "Сохранить", t_world: "Карта", t_pack: "Ресурс/Behavior пак", t_addon: "Аддон", t_tmpl: "Шаблон", t_other: "Другое", play_h: "Выберите Minecraft", play_sub: "Какую игру запустить?", not_inst: "Не установлена", settings: "Настройки Minecraft", close: "Закрыть", ok: "Готово",
+    set_h: "Кнопки Minecraft", set_sub: "Дополнительные кнопки поверх игры. Перетащите кнопку, чтобы изменить положение.",
+    preview: "Вид экрана", add_h: "Добавить кнопку", add_custom: "Другая клавиша (например G)", add: "Добавить",
+    sel_h: "Выбранная кнопка", key: "Клавиша", label: "Надпись", size: "Размер", opac: "Прозрачность", del: "Удалить", none_sel: "Выберите кнопку или добавьте новую.",
+    perm_overlay: "Показ поверх других приложений", perm_keys: "Отправка клавиш (Shizuku)", grant: "Включить", on: "Включено",
+    keys_note: "Android не позволяет обычному приложению нажимать клавиши в другом приложении. Нужен Shizuku (или root).",
+    pd: { Q: "Выбросить", F5: "Камера", F1: "Интерфейс", F3: "Отладка", E: "Инвентарь", T: "Чат", F11: "Во весь экран" } },
+  en: { cta_lib: "My files", lib_h: "My files", lib_p: "Save maps, resource packs, add-ons and other files. Then import them into Minecraft with one tap.", lib_add: "Add file", lib_empty: "No saved files yet.", lib_open: "Open", lib_del: "Delete", lib_sure: "Sure?", lib_save: "Save", t_world: "Map", t_pack: "Resource/Behavior pack", t_addon: "Add-on", t_tmpl: "Template", t_other: "Other", play_h: "Choose Minecraft", play_sub: "Which game should we launch?", not_inst: "Not installed", settings: "Minecraft settings", close: "Close", ok: "Done",
+    set_h: "Minecraft buttons", set_sub: "Extra buttons shown over the game. Drag a button to move it.",
+    preview: "Screen preview", add_h: "Add a button", add_custom: "Other key (e.g. G)", add: "Add",
+    sel_h: "Selected button", key: "Key", label: "Label", size: "Size", opac: "Opacity", del: "Delete", none_sel: "Select a button or add a new one.",
+    perm_overlay: "Display over other apps", perm_keys: "Send keys (Shizuku)", grant: "Enable", on: "Enabled",
+    keys_note: "Android does not let a normal app press keys inside another app. This needs Shizuku (or root).",
+    pd: { Q: "Drop", F5: "Camera", F1: "Hide HUD", F3: "Debug", E: "Inventory", T: "Chat", F11: "Fullscreen" } }
+};
+Object.keys(X).forEach(function (l) { Object.keys(X[l]).forEach(function (k) { T[l][k] = X[l][k]; }); });
+
+var N = window.BlokHubNative || null;
+var PRESETS = ["Q", "F5", "F1", "F3", "E", "T", "F11"];
+var cfg = { buttons: [mk("Q", 0.92, 0.2), mk("F5", 0.92, 0.38), mk("F1", 0.92, 0.56)] };
+var sel = null, drag = null, saveT = 0;
+function $(id) { return document.getElementById(id); }
+function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+function mk(key, x, y) { return { id: "b" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), label: key, key: key, x: x, y: y, size: 52, opacity: 0.75 }; }
+function loadCfg() {
+  var raw = "";
+  try { raw = N ? N.getConfig() : (localStorage.getItem("blokhub-cfg") || ""); } catch (e) {}
+  try { var c = JSON.parse(raw); if (c && Array.isArray(c.buttons)) cfg = c; } catch (e) {}
+}
+function saveCfg() {
+  clearTimeout(saveT);
+  saveT = setTimeout(function () {
+    var s = JSON.stringify(cfg);
+    try { if (N) N.saveConfig(s); else localStorage.setItem("blokhub-cfg", s); } catch (e) {}
+  }, 150);
+}
+function selBtn() { for (var i = 0; i < cfg.buttons.length; i++) if (cfg.buttons[i].id === sel) return cfg.buttons[i]; return null; }
+
+function showM(m) { m.hidden = false; document.body.style.overflow = "hidden"; }
+function hideAll() { $("pickModal").hidden = true; $("setModal").hidden = true; document.body.style.overflow = ""; }
+
+function renderPick() {
+  var d = T[lang], box = $("games"); box.replaceChildren();
+  var list = [];
+  try { list = N ? JSON.parse(N.games()) : []; } catch (e) {}
+  list.forEach(function (g) {
+    var b = el("button", "game"); b.type = "button";
+    b.appendChild(el("span", null, g.name));
+    b.appendChild(el("small", null, g.installed ? "" : d.not_inst));
+    b.addEventListener("click", function () { hideAll(); try { N.play(g.pkg); } catch (e) {} });
+    box.appendChild(b);
+  });
+}
+function openPick() { renderPick(); showM($("pickModal")); }
+
+function renderStat() {
+  var d = T[lang], box = $("stat"); box.replaceChildren();
+  if (!N) return;
+  var s = {};
+  try { s = JSON.parse(N.status()); } catch (e) {}
+  [[d.perm_overlay, s.overlay, "grantOverlay"], [d.perm_keys, s.keys, "grantShizuku"]].forEach(function (r) {
+    var row = el("div", "stat"); row.appendChild(el("span", null, r[0]));
+    if (r[1]) row.appendChild(el("b", "okk", d.on));
+    else {
+      var b = el("button", "btn", d.grant); b.type = "button";
+      b.addEventListener("click", function () { try { N[r[2]](); } catch (e) {} });
+      row.appendChild(b);
+    }
+    box.appendChild(row);
+  });
+  box.appendChild(el("p", "note", d.keys_note));
+}
+
+function styleBtn(n, b) {
+  var k = $("pv").clientWidth / 760, s = Math.max(22, b.size * k);
+  n.style.width = s + "px"; n.style.height = s + "px";
+  n.style.left = (b.x * 100) + "%"; n.style.top = (b.y * 100) + "%";
+  n.style.opacity = b.opacity; n.style.fontSize = Math.max(10, s * 0.3) + "px";
+  n.textContent = b.label;
+  n.classList.toggle("on", b.id === sel);
+}
+function nodeOf(id) { var c = $("pv").children; for (var i = 0; i < c.length; i++) if (c[i].dataset.id === id) return c[i]; return null; }
+function markSel() { cfg.buttons.forEach(function (b) { var n = nodeOf(b.id); if (n) n.classList.toggle("on", b.id === sel); }); }
+
+function renderPv() {
+  var pv = $("pv"); pv.replaceChildren();
+  cfg.buttons.forEach(function (b) {
+    var n = el("div", "pb"); n.dataset.id = b.id;
+    n.addEventListener("pointerdown", function (e) {
+      e.preventDefault(); n.setPointerCapture(e.pointerId);
+      drag = b; sel = b.id; markSel(); renderEditor();
+    });
+    n.addEventListener("pointermove", function (e) {
+      if (drag !== b) return;
+      var r = pv.getBoundingClientRect();
+      b.x = clamp((e.clientX - r.left) / r.width, 0.03, 0.97);
+      b.y = clamp((e.clientY - r.top) / r.height, 0.05, 0.95);
+      styleBtn(n, b);
+    });
+    var end = function () { if (drag === b) { drag = null; saveCfg(); } };
+    n.addEventListener("pointerup", end); n.addEventListener("pointercancel", end);
+    pv.appendChild(n); styleBtn(n, b);
+  });
+}
+
+function renderChips() {
+  var d = T[lang], box = $("chips"); box.replaceChildren();
+  PRESETS.forEach(function (k) {
+    var c = el("button", "chip", k + " \u00B7 " + d.pd[k]); c.type = "button";
+    c.addEventListener("click", function () { addBtn(k); });
+    box.appendChild(c);
+  });
+  $("customKey").placeholder = d.add_custom;
+}
+function addBtn(key) {
+  key = (key || "").trim().toUpperCase().replace(/[^A-Z0-9_]/g, "").slice(0, 16);
+  if (!key || cfg.buttons.length >= 16) return;
+  var n = cfg.buttons.length;
+  var b = mk(key, clamp(0.5 + (n % 5) * 0.06, 0.05, 0.95), clamp(0.3 + (n % 6) * 0.08, 0.1, 0.9));
+  cfg.buttons.push(b); sel = b.id;
+  renderPv(); renderEditor(); saveCfg();
+}
+
+function rangeField(text, min, max, val, unit, fn) {
+  var l = el("label"), sp = el("span", null, text + ": " + val + unit);
+  var i = el("input"); i.type = "range"; i.min = min; i.max = max; i.value = val;
+  i.addEventListener("input", function () { sp.textContent = text + ": " + i.value + unit; fn(+i.value); });
+  l.appendChild(sp); l.appendChild(i); return l;
+}
+function textField(text, val, max, fn) {
+  var l = el("label"); l.appendChild(el("span", null, text));
+  var i = el("input"); i.type = "text"; i.value = val; i.maxLength = max; i.autocapitalize = "off";
+  i.addEventListener("input", function () { fn(i); });
+  l.appendChild(i); return l;
+}
+function renderEditor() {
+  var d = T[lang], box = $("editor"), b = selBtn(); box.replaceChildren();
+  if (!b) { box.appendChild(el("p", "note", d.none_sel)); return; }
+  var upd = function () { var n = nodeOf(b.id); if (n) styleBtn(n, b); saveCfg(); };
+  box.appendChild(el("h3", null, d.sel_h));
+  var ed = el("div", "ed"), labelInput = null;
+  var kf = textField(d.key, b.key, 16, function (i) {
+    var old = b.key;
+    b.key = i.value.toUpperCase().replace(/[^A-Z0-9_]/g, "");
+    if (b.label === old && labelInput) { b.label = b.key.slice(0, 5); labelInput.value = b.label; }
+    upd();
+  });
+  var lf = textField(d.label, b.label, 5, function (i) { b.label = i.value; upd(); });
+  labelInput = lf.querySelector("input");
+  ed.appendChild(kf); ed.appendChild(lf);
+  ed.appendChild(rangeField(d.size, 28, 120, Math.round(b.size), " dp", function (v) { b.size = v; upd(); }));
+  ed.appendChild(rangeField(d.opac, 10, 100, Math.round(b.opacity * 100), "%", function (v) { b.opacity = v / 100; upd(); }));
+  var del = el("button", "btn danger", d.del); del.type = "button";
+  del.addEventListener("click", function () {
+    cfg.buttons = cfg.buttons.filter(function (x) { return x.id !== b.id; });
+    sel = null; renderPv(); renderEditor(); saveCfg();
+  });
+  ed.appendChild(del); box.appendChild(ed);
+}
+
+function openSet() {
+  hideAll(); loadCfg(); sel = null;
+  showM($("setModal"));
+  renderStat(); renderPv(); renderChips(); renderEditor();
+}
+function refreshUI() {
+  if (!$("pickModal").hidden) renderPick();
+  if (!$("setModal").hidden) { renderStat(); renderPv(); renderChips(); renderEditor(); }
+}
+$("openSet").addEventListener("click", openSet);
+$("addCustom").addEventListener("click", function () { addBtn($("customKey").value); $("customKey").value = ""; });
+document.querySelectorAll("[data-close]").forEach(function (b) { b.addEventListener("click", hideAll); });
+document.querySelectorAll(".modal").forEach(function (m) { m.addEventListener("click", function (e) { if (e.target === m) hideAll(); }); });
+window.addEventListener("resize", function () { if (!$("setModal").hidden) renderPv(); });
+window.addEventListener("focus", function () { if (!$("setModal").hidden) renderStat(); });
+
+function fmtSize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+function fileType(name) {
+  var e = (name.split(".").pop() || "").toLowerCase(), d = T[lang];
+  return e === "mcworld" ? d.t_world : e === "mcpack" ? d.t_pack : e === "mcaddon" ? d.t_addon : e === "mctemplate" ? d.t_tmpl : d.t_other;
+}
+function renderLib() {
+  var box = $("libList"); if (!box || !N) return;
+  var d = T[lang], list = [];
+  try { list = JSON.parse(N.libList()); } catch (e) {}
+  box.replaceChildren();
+  if (!list.length) { box.appendChild(el("div", "empty", d.lib_empty)); return; }
+  var wrapb = el("div", "mods");
+  list.forEach(function (f) {
+    var row = el("div", "fi"), info = el("div", "info");
+    info.appendChild(el("h3", null, f.name));
+    info.appendChild(el("p", null, fileType(f.name) + "  \u2022  " + fmtSize(f.size)));
+    var acts = el("div", "acts");
+    var o = el("button", "btn primary", d.lib_open); o.type = "button";
+    o.addEventListener("click", function () { try { N.libOpen(f.name); } catch (e) {} });
+    var x = el("button", "btn danger", d.lib_del); x.type = "button"; var armed = false;
+    x.addEventListener("click", function () {
+      if (!armed) { armed = true; x.textContent = d.lib_sure; setTimeout(function () { armed = false; x.textContent = d.lib_del; }, 3000); return; }
+      try { N.libDelete(f.name); } catch (e) {}
+      renderLib();
+    });
+    acts.appendChild(o); acts.appendChild(x);
+    row.appendChild(info); row.appendChild(acts); wrapb.appendChild(row);
+  });
+  box.appendChild(wrapb);
+}
+window.libChanged = renderLib;
+if (N) {
+  $("lib-sec").hidden = false; $("appLib").hidden = false;
+  $("libAdd").addEventListener("click", function () { try { N.libAdd(); } catch (e) {} });
+}
 
 var lang = "uz";
 try {
@@ -335,7 +666,11 @@ function render() {
       card.appendChild(info);
       var a = el("a", "btn primary", d.dl);
       a.href = m.url; a.target = "_blank"; a.rel = "noopener";
-      card.appendChild(a);
+      if (window.BlokHubNative) {
+        var acts = el("div", "acts"), sv = el("button", "btn", d.lib_save); sv.type = "button";
+        sv.addEventListener("click", function () { try { window.BlokHubNative.libSave(m.url); } catch (e) {} });
+        acts.appendChild(sv); acts.appendChild(a); card.appendChild(acts);
+      } else card.appendChild(a);
       box.appendChild(card);
     });
     list.appendChild(box);
@@ -350,6 +685,8 @@ function render() {
     det.appendChild(el("div", "body", item[1]));
     g.appendChild(det);
   });
+  if (typeof refreshUI === "function") refreshUI();
+  if (typeof renderLib === "function") renderLib();
 }
 
 document.querySelectorAll(".lang button").forEach(function (b) {
@@ -365,7 +702,13 @@ document.querySelectorAll("[data-scroll]").forEach(function (b) {
     if (t) t.scrollIntoView({ block: "start" });
   });
 });
+if (/BlokHubApp/.test(navigator.userAgent)) {
+  var ap = document.getElementById("appPlay");
+  ap.hidden = false;
+  ap.addEventListener("click", openPick);
+}
 render();
+if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js"); } catch (e) {} }
 </script>
 
 </body></html>
