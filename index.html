@@ -1,0 +1,371 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>BlokHub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: sticky bar, hero with a stack of three blocks, plain ruled feature list, HasanMC list, guide accordion. */
+:root {
+  --bg: #F1F5EF;
+  --surface: #FFFFFF;
+  --fg: #14201A;
+  --muted: #55645A;
+  --line: #D3DCD0;
+  --accent: #16A34A;
+  --accent-ink: #FFFFFF;
+  --cube-top: #4ADE80;
+  --cube-left: #15803D;
+  --cube-right: #166534;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0F0C; --surface: #121915; --fg: #E7EFE9; --muted: #93A39A; --line: #22302A;
+    --accent: #22C55E; --accent-ink: #04210F;
+    --cube-top: #4ADE80; --cube-left: #16A34A; --cube-right: #15803D;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B0F0C; --surface: #121915; --fg: #E7EFE9; --muted: #93A39A; --line: #22302A;
+  --accent: #22C55E; --accent-ink: #04210F;
+  --cube-top: #4ADE80; --cube-left: #16A34A; --cube-right: #15803D;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 960px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+.brand svg { width: 28px; height: 28px; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+.lang button { border: 0; background: none; padding: 7px 12px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: center; padding-block: 48px 40px; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.hero h1 { font-size: clamp(44px, 11vw, 88px); font-weight: 700; letter-spacing: -0.03em; margin-top: 8px; }
+.hero .sub { color: var(--muted); font-size: 18px; max-width: 34ch; margin-top: 16px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.stack { width: 100%; max-width: 320px; justify-self: center; }
+.stack svg { width: 100%; height: auto; display: block; }
+
+/* sections */
+section { padding-block: 40px; border-top: 1px solid var(--line); }
+section > .wrap > h2 { font-size: clamp(26px, 5vw, 36px); font-weight: 700; letter-spacing: -0.02em; }
+.lead { color: var(--muted); margin-top: 8px; max-width: 56ch; }
+
+.feat { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+.feat div { padding-block: 16px; border-top: 1px solid var(--line); min-width: 0; }
+.feat h3 { font-size: 18px; font-weight: 700; }
+.feat p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+
+.mods { margin-top: 20px; display: grid; gap: 12px; }
+.mod { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.mod .info { min-width: 0; flex: 1 1 220px; }
+.mod h3 { font-size: 18px; }
+.mod p { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.mod .meta { margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+.empty { margin-top: 20px; padding: 24px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); }
+
+details { border-top: 1px solid var(--line); padding-block: 4px; }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; padding-block: 14px; font-family: var(--font-display); font-weight: 700; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+details .body { padding-bottom: 16px; color: var(--muted); white-space: pre-line; max-width: 64ch; }
+.guide { margin-top: 20px; }
+
+.steps { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; counter-reset: s; max-width: 64ch; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); width: 36px; height: 36px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-display); font-weight: 700; display: grid; place-items: center; }
+.note { margin-top: 16px; color: var(--muted); font-size: 14px; max-width: 64ch; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 13px; }
+footer .wrap { display: grid; gap: 8px; }
+
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }
+  .stack { max-width: 220px; justify-self: start; }
+  .feat { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cube" viewBox="0 0 100 100">
+      <polygon points="50,5 92,28 50,51 8,28" fill="var(--cube-top)"/>
+      <polygon points="8,28 50,51 50,97 8,74" fill="var(--cube-left)"/>
+      <polygon points="50,51 92,28 92,74 50,97" fill="var(--cube-right)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cube"/></svg><span>BlokHub</span></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow" data-t="tag"></p>
+      <h1>BlokHub</h1>
+      <p class="sub" data-t="hero_sub"></p>
+      <div class="cta">
+        <button class="btn primary" type="button" data-scroll="mods" data-t="cta_mods"></button>
+      </div>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <use href="#cube" x="50" y="0" width="100" height="100"/>
+        <use href="#cube" x="5" y="52" width="100" height="100"/>
+        <use href="#cube" x="95" y="52" width="100" height="100"/>
+      </svg>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 data-t="feat_title"></h2>
+      <div class="feat">
+        <div><h3 data-t="f1_h"></h3><p data-t="f1_p"></p></div>
+        <div><h3 data-t="f2_h"></h3><p data-t="f2_p"></p></div>
+        <div><h3 data-t="f3_h"></h3><p data-t="f3_p"></p></div>
+        <div><h3 data-t="f4_h"></h3><p data-t="f4_p"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mods">
+    <div class="wrap">
+      <h2 data-t="hasan_h"></h2>
+      <p class="lead" data-t="hasan_p"></p>
+      <div id="modList"></div>
+    </div>
+  </section>
+
+  <section id="guide-sec">
+    <div class="wrap">
+      <h2 data-t="guide_h"></h2>
+      <div class="guide" id="guide"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-t="foot_1"></p>
+    <p data-t="foot_2"></p>
+  </div>
+</footer>
+
+<script>
+// HasanMC modlari: yangi mod qo'shish uchun shu ro'yxatga yozuv qo'shing.
+// { name, description: {uz, ru, en}, version, mcVersion, size, url }  (url: GitHub'dagi mods/ papkadagi fayl havolasi)
+var MODS = [
+  {
+    name: "Orbital Railgun",
+    description: {
+      uz: "Orbital Railgun add-oni (BP va RP). Muallif: Hasan.",
+      ru: "Аддон Orbital Railgun (BP и RP). Автор: Hasan.",
+      en: "Orbital Railgun add-on (BP and RP). Author: Hasan."
+    },
+    version: "1.0.0", mcVersion: "1.21.0+", size: "2.9 MB",
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/Orbital_Railgun_V1.0.0.mcaddon"
+  },
+  {
+    name: "Better Cape & Elytra",
+    description: {
+      uz: "Plash va elytra uchun resource pack, animatsiyalangan Cape Physics bilan. KID_SKY va Xatalyst asosida, Hasan tahriri.",
+      ru: "Ресурспак для плаща и элитр с анимированной Cape Physics. На основе работ KID_SKY и Xatalyst, правки Hasan.",
+      en: "Resource pack for capes and elytra with animated Cape Physics. Based on work by KID_SKY and Xatalyst, edited by Hasan."
+    },
+    version: "1.0.0", mcVersion: "Resource pack", size: "12.3 MB",
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/Better_Cape_and_Elytra.mcpack"
+  },
+  {
+    name: "Creative Anvil",
+    description: {
+      uz: "Creative Anvil: menyu orqali xohlagan sehr va daraja. Muallif: Hasan.",
+      ru: "Creative Anvil: меню для любых зачарований и уровней. Автор: Hasan.",
+      en: "Creative Anvil: a menu for any enchantment and level. Author: Hasan."
+    },
+    version: "1.0.0", mcVersion: "1.21.80+", size: "17 KB",
+    url: "https://raw.githubusercontent.com/doston199108031-sudo/Blockhub/main/mods/CreativeAnvil.mcaddon"
+  }
+];
+
+var T = {
+  uz: {
+    tag: "Minecraft Bedrock uchun",
+    hero_sub: "HasanMC modlari va Bedrock uchun qo'llanma. Faylni yuklang, Minecraft uni o'zi ochadi.",
+    cta_mods: "HasanMC modlari",
+    feat_title: "Ichida nima bor",
+    f1_h: "Add-onlar (modlar)", f1_p: "Bedrock'da Forge yo'q, modlar o'rnini add-onlar bosadi. Quyida HasanMC modlari.",
+    f2_h: "Bir bosishda o'rnatish", f2_p: "Faylni yuklab, ustiga bosing: Minecraft uni o'zi import qiladi.",
+    f3_h: "O'zbekcha qo'llanma", f3_p: "Add-on, xarita va tekstura o'rnatish qadamlari.",
+    f4_h: "Uch til", f4_p: "O'zbekcha, Русский, English.",
+    hasan_h: "HasanMC modlari", hasan_p: "Muallifning o'z modlari. Faylni yuklang, Minecraft uni o'zi ochadi.",
+    empty: "Hozircha mod yo'q. Tez orada qo'shiladi.", dl: "Yuklab olish",
+    guide_h: "Qo'llanma",
+    g: [
+      ["Add-on (mod) o'rnatish", "1. Add-on faylini (.mcpack yoki .mcaddon) yuklab oling.\n2. Faylni bosing: Minecraft ochilib, import xabari chiqadi.\n3. Minecraft'da dunyo yarating yoki mavjud dunyoni tahrirlang (qalam belgisi).\n4. \"Behavior Packs\" va \"Resource Packs\" bo'limlarida add-onni yoqing.\n5. Agar add-on talab qilsa, dunyo sozlamalarida \"Experiments\" funksiyalarini yoqing."],
+      ["Xarita o'rnatish", ".mcworld faylni yuklab, ustiga bosing. Xarita Minecraft'ga import bo'ladi va \"Play\" → \"Worlds\" ro'yxatida paydo bo'ladi."],
+      ["Tekstura (resource pack)", "Tekstura faylini o'rnatgach, Settings → Global Resources orqali yoki dunyo sozlamalarida paketni yoqing."],
+      ["Versiya muhim", "Add-on ko'pincha aniq Minecraft versiyasi uchun yoziladi. O'yiningiz versiyasiga mosini tanlang. Mos kelmasa, add-on ishlamasligi mumkin."],
+      ["Fayl yuklanmasa", "Ba'zi mualliflar fayllarni tashqi yuklashdan cheklagan. Bunda fayl sahifasidan qo'lda yuklab oling."],
+      ["Eslatma", "Bedrock'da Forge yoki Fabric kabi loaderlar yo'q: modlar o'rnini add-onlar bosadi. Bu loyiha norasmiy va faqat litsenziyali o'yin bilan ishlaydi."]
+    ],
+    foot_1: "Norasmiy loyiha. Mojang yoki Microsoft bilan bog'liq emas.",
+    foot_2: "Minecraft — Mojang Synergies AB'ning savdo belgisi."
+  },
+  ru: {
+    tag: "Для Minecraft Bedrock",
+    hero_sub: "Моды HasanMC и руководство для Bedrock. Скачайте файл, Minecraft откроет его сам.",
+    cta_mods: "Моды HasanMC",
+    feat_title: "Что внутри",
+    f1_h: "Аддоны (моды)", f1_p: "В Bedrock нет Forge, модами служат аддоны. Ниже моды HasanMC.",
+    f2_h: "Установка в одно касание", f2_p: "Скачайте файл и нажмите на него: Minecraft импортирует его сам.",
+    f3_h: "Пошаговое руководство", f3_p: "Как установить аддоны, карты и текстуры.",
+    f4_h: "Три языка", f4_p: "O'zbekcha, Русский, English.",
+    hasan_h: "Моды HasanMC", hasan_p: "Собственные моды автора. Скачайте файл, Minecraft откроет его сам.",
+    empty: "Пока модов нет. Скоро добавим.", dl: "Скачать",
+    guide_h: "Руководство",
+    g: [
+      ["Установка аддона (мода)", "1. Скачайте файл аддона (.mcpack или .mcaddon).\n2. Нажмите на файл: откроется Minecraft и появится сообщение об импорте.\n3. В Minecraft создайте мир или откройте настройки существующего (значок карандаша).\n4. В разделах «Behavior Packs» и «Resource Packs» включите аддон.\n5. Если аддон требует, включите экспериментальные функции («Experiments») в настройках мира."],
+      ["Установка карты", "Скачайте файл .mcworld и нажмите на него. Карта импортируется в Minecraft и появится в списке «Play» → «Worlds»."],
+      ["Текстуры (ресурспак)", "После установки пака включите его в Settings → Global Resources или в настройках мира."],
+      ["Версия важна", "Аддоны часто пишутся под конкретную версию Minecraft. Выбирайте подходящую вашей игре. Если версия не совпадает, аддон может не работать."],
+      ["Если файл не скачивается", "Некоторые авторы ограничили внешнюю загрузку. Тогда скачайте файл вручную со страницы мода."],
+      ["Примечание", "В Bedrock нет загрузчиков вроде Forge или Fabric: модами служат аддоны. Проект неофициальный и работает только с лицензионной игрой."]
+    ],
+    foot_1: "Неофициальный проект. Не связан с Mojang или Microsoft.",
+    foot_2: "Minecraft является товарным знаком Mojang Synergies AB."
+  },
+  en: {
+    tag: "For Minecraft Bedrock",
+    hero_sub: "HasanMC mods and a guide for Bedrock. Download a file and Minecraft opens it for you.",
+    cta_mods: "HasanMC mods",
+    feat_title: "What's inside",
+    f1_h: "Add-ons (mods)", f1_p: "Bedrock has no Forge, add-ons serve as mods. HasanMC mods are below.",
+    f2_h: "One-tap install", f2_p: "Download the file and tap it: Minecraft imports it for you.",
+    f3_h: "Step-by-step guide", f3_p: "How to install add-ons, maps and textures.",
+    f4_h: "Three languages", f4_p: "O'zbekcha, Русский, English.",
+    hasan_h: "HasanMC mods", hasan_p: "The author's own mods. Download a file and Minecraft opens it for you.",
+    empty: "No mods yet. Coming soon.", dl: "Download",
+    guide_h: "Guide",
+    g: [
+      ["Installing an add-on (mod)", "1. Download the add-on file (.mcpack or .mcaddon).\n2. Tap the file: Minecraft opens and shows an import message.\n3. In Minecraft create a world or edit an existing one (pencil icon).\n4. Enable the add-on under Behavior Packs and Resource Packs.\n5. If the add-on requires it, turn on Experiments in the world settings."],
+      ["Installing a map", "Download the .mcworld file and tap it. The map is imported into Minecraft and appears under Play → Worlds."],
+      ["Textures (resource pack)", "After installing the pack, enable it in Settings → Global Resources or in the world settings."],
+      ["The version matters", "Add-ons are often made for a specific Minecraft version. Pick the one that matches your game. A mismatched add-on may not work."],
+      ["If a file will not download", "Some authors restrict third-party downloads. In that case download the file manually from its page."],
+      ["Note", "Bedrock has no loaders like Forge or Fabric: add-ons serve as mods. This project is unofficial and works only with a licensed copy of the game."]
+    ],
+    foot_1: "Unofficial project. Not affiliated with Mojang or Microsoft.",
+    foot_2: "Minecraft is a trademark of Mojang Synergies AB."
+  }
+};
+
+var lang = "uz";
+try {
+  var saved = localStorage.getItem("blokhub-lang");
+  if (saved && T[saved]) lang = saved;
+  else { var nav = (navigator.language || "uz").slice(0, 2); if (T[nav]) lang = nav; }
+} catch (e) {}
+
+function el(tag, cls, text) {
+  var n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+function render() {
+  var d = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(function (n) { n.textContent = d[n.getAttribute("data-t")] || ""; });
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+  });
+
+  var list = document.getElementById("modList");
+  list.replaceChildren();
+  if (!MODS.length) {
+    list.appendChild(el("div", "empty", d.empty));
+  } else {
+    var box = el("div", "mods");
+    MODS.forEach(function (m) {
+      var card = el("div", "mod");
+      var info = el("div", "info");
+      info.appendChild(el("h3", null, m.name));
+      var desc = (m.description && typeof m.description === "object") ? m.description[lang] : m.description;
+      if (desc) info.appendChild(el("p", null, desc));
+      var meta = [m.version, m.mcVersion, m.size].filter(Boolean).join("  \u2022  ");
+      if (meta) info.appendChild(el("p", "meta", meta));
+      card.appendChild(info);
+      var a = el("a", "btn primary", d.dl);
+      a.href = m.url; a.target = "_blank"; a.rel = "noopener";
+      card.appendChild(a);
+      box.appendChild(card);
+    });
+    list.appendChild(box);
+  }
+
+  var g = document.getElementById("guide");
+  g.replaceChildren();
+  d.g.forEach(function (item, i) {
+    var det = el("details");
+    if (i === 0) det.open = true;
+    det.appendChild(el("summary", null, item[0]));
+    det.appendChild(el("div", "body", item[1]));
+    g.appendChild(det);
+  });
+}
+
+document.querySelectorAll(".lang button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    lang = b.getAttribute("data-lang");
+    try { localStorage.setItem("blokhub-lang", lang); } catch (e) {}
+    render();
+  });
+});
+document.querySelectorAll("[data-scroll]").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var t = document.getElementById(b.getAttribute("data-scroll"));
+    if (t) t.scrollIntoView({ block: "start" });
+  });
+});
+render();
+</script>
+
+</body></html>
