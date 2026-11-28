@@ -1,4 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><title>BlokHub | Minecraft Bedrock modlari va add-onlar</title>
+<!doctype html><html><head><meta charset=utf8><link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B0F0C">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>BlokHub | Minecraft Bedrock modlari va add-onlar</title>
 <meta name="description" content="BlokHub (blockhub.uz): Minecraft Bedrock uchun modlar, add-onlar va o'zbekcha qo'llanma. Faylni yuklang, Minecraft uni o'zi ochadi.">
 <link rel="canonical" href="https://blockhub.uz/">
 <meta property="og:title" content="BlokHub | Minecraft Bedrock modlari">
@@ -147,6 +151,8 @@ footer .wrap { display: grid; gap: 8px; }
       <h1>BlokHub</h1>
       <p class="sub" data-t="hero_sub"></p>
       <div class="cta">
+        <button class="btn primary" id="appPlay" type="button" hidden data-t="app_play"></button>
+        <button class="btn" id="appSettings" type="button" hidden data-t="app_settings"></button>
         <button class="btn primary" type="button" data-scroll="mods" data-t="cta_mods"></button>
       </div>
     </div>
@@ -176,18 +182,6 @@ footer .wrap { display: grid; gap: 8px; }
       <h2 data-t="hasan_h"></h2>
       <p class="lead" data-t="hasan_p"></p>
       <div id="modList"></div>
-    </div>
-  </section>
-
-  <section id="old-sec">
-    <div class="wrap">
-      <h2 data-t="old_h"></h2>
-      <p class="lead" data-t="old_p"></p>
-      <div class="cta">
-        <button class="btn" type="button" disabled data-t="old_play"></button>
-        <a class="btn primary" data-t="old_apk" href="https://github.com/doston199108031-sudo/Blockhub/releases/download/minicraft/Minicraft_PE_.apk" target="_blank" rel="noopener"></a>
-      </div>
-      <p class="note" data-t="old_note"></p>
     </div>
   </section>
 
@@ -274,7 +268,8 @@ var MODS = [
 
 var T = {
   uz: {
-    old_h: "Minecraft eski versiya", old_p: "Minicraft PE: Minecraft'ning eski, oddiy ko'rinishdagi versiyasi.", old_play: "Online o'ynash (tez orada)", old_apk: "APK yuklab olish", old_note: "Online o'ynash va multiplayer xonalar ro'yxati tez orada qo'shiladi. APK faqat Android uchun.",
+    app_play: "O'YNASH",
+    app_settings: "Minecraft sozlamalari",
     tag: "Minecraft Bedrock uchun",
     hero_sub: "HasanMC modlari va Bedrock uchun qo'llanma. Faylni yuklang, Minecraft uni o'zi ochadi.",
     cta_mods: "HasanMC modlari",
@@ -298,7 +293,8 @@ var T = {
     foot_2: "Minecraft — Mojang Synergies AB'ning savdo belgisi."
   },
   ru: {
-    old_h: "Старая версия Minecraft", old_p: "Minicraft PE: старая версия Minecraft в простом виде.", old_play: "Играть онлайн (скоро)", old_apk: "Скачать APK", old_note: "Онлайн-игра и список мультиплеер-комнат скоро появятся. APK только для Android.",
+    app_play: "ИГРАТЬ",
+    app_settings: "Настройки Minecraft",
     tag: "Для Minecraft Bedrock",
     hero_sub: "Моды HasanMC и руководство для Bedrock. Скачайте файл, Minecraft откроет его сам.",
     cta_mods: "Моды HasanMC",
@@ -322,7 +318,8 @@ var T = {
     foot_2: "Minecraft является товарным знаком Mojang Synergies AB."
   },
   en: {
-    old_h: "Old Minecraft version", old_p: "Minicraft PE: an old, simple-looking Minecraft version.", old_play: "Play online (soon)", old_apk: "Download APK", old_note: "Online play and a multiplayer room list are coming soon. The APK is Android only.",
+    app_play: "PLAY",
+    app_settings: "Minecraft settings",
     tag: "For Minecraft Bedrock",
     hero_sub: "HasanMC mods and a guide for Bedrock. Download a file and Minecraft opens it for you.",
     cta_mods: "HasanMC mods",
@@ -416,7 +413,16 @@ document.querySelectorAll("[data-scroll]").forEach(function (b) {
     if (t) t.scrollIntoView({ block: "start" });
   });
 });
+if (/BlokHubApp/.test(navigator.userAgent)) {
+  var ap = document.getElementById("appPlay");
+  ap.hidden = false;
+  ap.addEventListener("click", function () { location.href = "blokhub://play"; });
+  var as2 = document.getElementById("appSettings");
+  as2.hidden = false;
+  as2.addEventListener("click", function () { location.href = "blokhub://settings"; });
+}
 render();
+if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js"); } catch (e) {} }
 </script>
 
 </body></html>
